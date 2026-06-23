@@ -1,31 +1,29 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Velora World Cup 2026</title><link rel="stylesheet" href="style.css"><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet"></head><body><header class="top-header"><div class="logo-box">
-<h1>VELORA</h1>
-<p>پیش‌بینی کن، امتیاز بگیر، قهرمان شو</p>
-</div></header><nav class="navbar"><button class="nav-btn">🏠 خانه</button>
-<button class="nav-btn">⚽ پیش‌بینی</button>
-<button class="nav-btn">🏆 رتبه‌بندی</button>
-<button class="nav-btn">👤 پروفایل</button>
-<button class="nav-btn">💰 بانک</button>
-
-</nav><main><section class="card"><h2>⚽ مسابقات امروز</h2><div id="matches"><p>در حال دریافت مسابقات...</p></div></section><section class="card"><h2>⏳ شمارش معکوس مسابقه بعدی</h2><div id="countdown">
-00:00:00
-</div></section><section class="card"><h2>🏆 جدول برترین کاربران</h2><div id="leaderboard"><div class="leader">
-<span>1</span>
-<span>کاربر نمونه</span>
-<span>1000</span>
-</div></div></section><section class="card"><h2>📢 اطلاعیه‌ها</h2><div id="announcements"><p>به Velora خوش آمدید.</p></div></section><section class="card"><h2>💬 چت زنده مسابقه</h2><div id="chatBox"><p>هنوز پیامی وجود ندارد.</p></div><input type="text" id="messageInput" placeholder="پیام خود را بنویسید"><button id="sendBtn">
-ارسال
-</button></section><section class="card"><h2>👤 ورود / ثبت‌نام</h2><input type="email" id="email" placeholder="ایمیل"><input type="password" id="password" placeholder="رمز عبور"><button id="registerBtn">
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Velora World Cup 2026</title><link rel="stylesheet" href="style.css"></head><body><header class="header"><h1>VELORA WORLD CUP 2026</h1><p>
+پیش‌بینی کن • امتیاز بگیر • قهرمان شو
+</p></header><section class="card"><h2>🔐 ورود / ثبت نام</h2><input id="email" type="email" placeholder="ایمیل"><input id="password" type="password" placeholder="رمز عبور"><button onclick="registerUser()">
 ثبت نام
-</button><button id="loginBtn">
+</button><button onclick="loginUser()">
 ورود
-</button></section></main><footer><p>
+</button></section><section class="card"><h2>👤 پروفایل</h2><p id="userEmail">
+وارد نشده
+</p><p>
+💰 سکه:
+<span id="coins">
+0
+</span>
+</p><p>
+🏆 امتیاز:
+<span id="points">
+0
+</span>
+</p></section><section class="card"><h2>⚽ مسابقات</h2><div id="matches">در حال بارگذاری...
+
+</div></section><section class="card"><h2>🏆 رتبه بندی</h2><div id="leaderboard">در حال بارگذاری...
+
+</div></section><footer><p>
 سازنده:
 <strong>
 امیرعلی فروزان‌اصل
 </strong>
-</p><p>
-Velora World Cup 2026
 </p></footer><script type="module" src="app.js"></script></body></html>
