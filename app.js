@@ -152,3 +152,31 @@ board.innerHTML += `
 `;});
 
 }
+async function loadMatches(){
+
+const matchesDiv =
+document.getElementById("matches");
+
+matchesDiv.innerHTML =
+"در حال دریافت مسابقات...";
+
+const matches =
+await getMatches();
+
+matchesDiv.innerHTML = "";
+
+matches.forEach(match=>{
+
+matchesDiv.innerHTML += `
+
+<div class="leader"><span>
+${match.teams.home.name}
+</span><span>
+vs
+</span><span>
+${match.teams.away.name}
+</span></div>`;
+
+});
+
+}
