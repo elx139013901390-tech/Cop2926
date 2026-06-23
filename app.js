@@ -1,3 +1,12 @@
+import {
+query,
+where,
+getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+addDoc,
+collection
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { getMatches } from "./api.js";
 import { auth, db } from "./firebase.js";
 
@@ -178,5 +187,69 @@ ${match.teams.away.name}
 </span></div>`;
 
 });
+
+}
+window.predict = async function(
+fixtureId,
+prediction,
+matchTime
+){
+
+const user = auth.currentUser;
+
+if(!user){
+
+alert("ابتدا وارد شوید");
+return;
+
+}
+
+/* قفل 10 دقیقه قبل بازی */
+
+const now = new Date();
+
+const start = new Date(matchTime);
+
+const diffMinutes =
+(start - now) / 1000 / 60;
+
+if(diffMinutes <= 10){
+
+alert("⛔ پیش‌بینی بسته شده است");
+
+return;
+
+}
+
+/* بررسی پیش‌بینی قبلی */
+
+const q = query(
+collection(db,"predictions"),
+where("userId","==",user.uid),
+where("fixtureId","==",fixtureId)
+);
+
+const existing =
+await getDocs(q);
+
+if(!existing.empty){
+
+alert("⚠️ شما قبلاً پیش‌بینی کرده‌اید");
+
+return;
+
+}
+
+await addDoc(
+collection(db,"predictions"),
+{
+userId:user.uid,
+fixtureId,
+prediction,
+createdAt:Date.now()
+}
+);
+
+alert("✅ پیش‌بینی ثبت شد");
 
 }
