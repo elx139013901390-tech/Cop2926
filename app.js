@@ -1,3 +1,4 @@
+import { getMatches } from "./api.js";
 import { auth, db } from "./firebase.js";
 
 import {
