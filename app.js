@@ -109,3 +109,45 @@ document.getElementById("userEmail").innerText =
 }
 
 });
+
+import {
+collection,
+getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* Leaderboard */
+
+async function loadLeaderboard(){
+
+const board = document.getElementById("leaderboard");
+
+const snapshot = await getDocs(
+collection(db,"users")
+);
+
+let users = [];
+
+snapshot.forEach((docSnap)=>{
+
+users.push(docSnap.data());
+
+});
+
+users.sort((a,b)=>
+(b.points || 0) - (a.points || 0)
+);
+
+board.innerHTML = "";
+
+users.forEach((user,index)=>{
+
+board.innerHTML += `
+
+<div class="leader">
+<span>#${index+1}</span>
+<span>${user.email}</span>
+<span>${user.points || 0} امتیاز</span>
+</div>
+`;});
+
+}
